@@ -1,0 +1,169 @@
+/* ─── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design Tokens — Warm Pastel Light Theme ─────────────────── */
+@theme {
+  --color-bg: #FFFDF7;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #FFF9D2;
+  --color-bg-elevated: #FFF9D2;
+  --color-primary: #5BA3D9;
+  --color-primary-light: #8CC0EB;
+  --color-secondary: #FFEBCC;
+  --color-accent-blue: #BFDDF0;
+  --color-accent-purple: #C8A2E8;
+  --color-accent-green: #7BC9A4;
+  --color-accent-red: #E57373;
+  --color-accent-warm: #FFF9D2;
+  --color-text: #2C2825;
+  --color-text-muted: #6B6560;
+  --color-text-dim: #A09890;
+  --color-border: #E8DFD0;
+  --color-border-light: #F0E8DB;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── Scrollbar Styling ────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+/* ─── Custom Utilities ─────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), #4A97CF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-primary {
+  box-shadow: 0 4px 24px rgba(91, 163, 217, 0.15),
+              0 1px 3px rgba(91, 163, 217, 0.08);
+}
+
+.glow-secondary {
+  box-shadow: 0 4px 24px rgba(255, 235, 204, 0.4),
+              0 1px 3px rgba(255, 235, 204, 0.2);
+}
+
+.glass {
+  background: rgba(255, 253, 247, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ─── Card Hover Effects ───────────────────────────────────────── */
+.card-soft {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-soft:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 8px 32px rgba(91, 163, 217, 0.1),
+              0 2px 8px rgba(91, 163, 217, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ─── Animations ───────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(91, 163, 217, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(91, 163, 217, 0.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(91,163,217,0.06), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ─── Typewriter for AI Chat ───────────────────────────────────── */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-primary); }
+}
+
+.typewriter-cursor::after {
+  content: '|';
+  color: var(--color-primary);
+  animation: blink-caret 1s step-end infinite;
+}
+
+/* ─── Form Elements ────────────────────────────────────────────── */
+input, select, textarea {
+  font-size: 15px;
+}
+
+/* ─── Selection ────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-text);
+}
