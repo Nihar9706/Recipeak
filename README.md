@@ -50,7 +50,6 @@
 | MongoDB + Mongoose | Database |
 | JWT + bcrypt | Authentication |
 | Zod | Input validation |
-
 | Swagger | API documentation |
 
 ---
