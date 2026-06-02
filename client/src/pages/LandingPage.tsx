@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Target, ChefHat, Zap } from 'lucide-react';
+import { ArrowRight, Target, ChefHat, Zap } from 'lucide-react';
 import { useCategories, useFeaturedRecipes } from '../hooks/useData';
 import CategoryCard from '../components/recipe/CategoryCard';
 import RecipeCard from '../components/recipe/RecipeCard';
@@ -29,11 +29,7 @@ export default function LandingPage() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent-blue/20 border border-accent-blue/30
-                           text-primary text-sm font-semibold">
-              <Sparkles size={14} />
-              AI-Powered Recipe Discovery
-            </span>
+
           </motion.div>
 
           <motion.h1
@@ -54,7 +50,7 @@ export default function LandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Discover recipes tailored to your fitness goals and sport.
-            Detailed nutrition breakdowns. AI-powered meal recommendations.
+            Detailed nutrition breakdowns and curated meal recommendations.
           </motion.p>
 
           <motion.div
@@ -186,40 +182,7 @@ export default function LandingPage() {
         </section>
       )}
 
-      {/* ─── AI CTA ───────────────────────────────────────────── */}
-      <section className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="relative rounded-3xl overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/30 via-bg-card to-secondary/30" />
-            <div className="relative z-10 p-12 sm:p-16 text-center border border-border rounded-3xl">
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                <Sparkles className="text-primary" size={28} />
-              </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold mb-5 text-text">
-                Ask Our AI Chef
-              </h2>
-              <p className="text-text-muted max-w-xl mx-auto mb-8 text-lg leading-relaxed">
-                Describe what you need — "high protein breakfast under 400 calories" —
-                and get instant, personalized recipe recommendations.
-              </p>
-              <Link
-                to="/ai-search"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary text-white
-                         font-semibold text-lg hover:bg-primary/90 transition-all duration-300
-                         hover:shadow-[0_8px_32px_rgba(91,163,217,0.35)]"
-              >
-                <Sparkles size={18} />
-                Try AI Assistant
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   );
 }

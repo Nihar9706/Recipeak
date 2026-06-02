@@ -70,7 +70,7 @@ async function seed() {
         const steps: string[] = d.analyzedInstructions?.[0]?.steps?.map((s: any) => s.step) || (d.instructions ? [d.instructions.replace(/<[^>]*>/g, '')] : ['Follow recipe instructions.']);
 
         const recipe = {
-          title: d.title, description: (d.summary || '').replace(/<[^>]*>/g, '').substring(0, 300) + '...',
+          title: d.title, description: (d.summary || '').replace(/<[^>]*>/g, ''),
           imageUrl: d.image || '', category: category._id, tags: [...(d.diets || []), ...(d.dishTypes || [])].slice(0, 8),
           difficulty: getDifficulty(d.preparationMinutes || 15, d.cookingMinutes || d.readyInMinutes || 30),
           prepTime: d.preparationMinutes || Math.max(10, Math.floor((d.readyInMinutes || 30) * 0.4)),

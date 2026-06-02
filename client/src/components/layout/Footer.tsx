@@ -29,7 +29,7 @@ export default function Footer() {
               {[
                 { to: '/categories', label: 'Categories' },
                 { to: '/recipes', label: 'All Recipes' },
-                { to: '/ai-search', label: 'AI Assistant' },
+
               ].map((link) => (
                 <li key={link.to}>
                   <Link

@@ -1,5 +1,5 @@
 import api from './api';
-import type { Recipe, Category, ApiResponse, RecipeFilters, AISearchResponse, AISearchLog } from '../types';
+import type { Recipe, Category, ApiResponse, RecipeFilters } from '../types';
 
 export const recipeService = {
   getAll: async (filters: RecipeFilters = {}) => {
@@ -72,14 +72,4 @@ export const userService = {
   },
 };
 
-export const aiService = {
-  search: async (query: string) => {
-    const res = await api.post<ApiResponse<AISearchResponse>>('/ai/search', { query });
-    return res.data.data;
-  },
 
-  getHistory: async () => {
-    const res = await api.get<ApiResponse<AISearchLog[]>>('/ai/history');
-    return res.data.data;
-  },
-};

@@ -12,7 +12,7 @@ import CategoriesPage from './pages/CategoriesPage';
 import CategoryDetailPage from './pages/CategoryDetailPage';
 import RecipesPage from './pages/RecipesPage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
-import AISearchPage from './pages/AISearchPage';
+
 import ProfilePage from './pages/ProfilePage';
 
 const queryClient = new QueryClient({
@@ -41,14 +41,7 @@ function App() {
                 <Route path="/categories/:id" element={<CategoryDetailPage />} />
                 <Route path="/recipes" element={<RecipesPage />} />
                 <Route path="/recipes/:id" element={<RecipeDetailPage />} />
-                <Route
-                  path="/ai-search"
-                  element={
-                    <ProtectedRoute>
-                      <AISearchPage />
-                    </ProtectedRoute>
-                  }
-                />
+
                 <Route
                   path="/profile"
                   element={

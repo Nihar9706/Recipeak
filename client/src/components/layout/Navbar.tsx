@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search, User, LogOut, BookmarkCheck, ChefHat, Sparkles } from 'lucide-react';
+import { Menu, X, Search, User, LogOut, BookmarkCheck, ChefHat } from 'lucide-react';
 import { useAuth } from '../../store/AuthContext';
 
 export default function Navbar() {
@@ -19,7 +19,7 @@ export default function Navbar() {
   const navLinks = [
     { to: '/categories', label: 'Categories', icon: <ChefHat size={16} /> },
     { to: '/recipes', label: 'Recipes', icon: <Search size={16} /> },
-    { to: '/ai-search', label: 'AI Assistant', icon: <Sparkles size={16} /> },
+
   ];
 
   return (

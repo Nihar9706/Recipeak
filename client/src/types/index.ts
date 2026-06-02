@@ -62,20 +62,7 @@ export interface Recipe {
   createdAt: string;
 }
 
-// ─── AI Search ────────────────────────────────────────────────────
-export interface AISearchLog {
-  _id: string;
-  user: string;
-  query: string;
-  responseSummary: string;
-  recipeIds: Recipe[] | string[];
-  createdAt: string;
-}
 
-export interface AISearchResponse {
-  response: string;
-  recipes: Recipe[];
-}
 
 // ─── API Response ─────────────────────────────────────────────────
 export interface ApiResponse<T> {

@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { recipeService, categoryService, userService, aiService } from '../services/data.service';
+import { recipeService, categoryService, userService } from '../services/data.service';
 import type { RecipeFilters } from '../types';
 import { useAuth } from '../store/AuthContext';
 import toast from 'react-hot-toast';
@@ -96,22 +96,4 @@ export function useUnsaveRecipe() {
   });
 }
 
-// ─── AI Search ────────────────────────────────────────────────────
 
-export function useAISearch() {
-  return useMutation({
-    mutationFn: aiService.search,
-    onError: (error: Error) => {
-      toast.error(error.message);
-    },
-  });
-}
-
-export function useAIHistory() {
-  const { user } = useAuth();
-  return useQuery({
-    queryKey: ['aiHistory'],
-    queryFn: aiService.getHistory,
-    enabled: !!user,
-  });
-}

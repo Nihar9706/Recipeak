@@ -145,17 +145,7 @@ body {
   animation: shimmer 2s infinite;
 }
 
-/* ─── Typewriter for AI Chat ───────────────────────────────────── */
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--color-primary); }
-}
 
-.typewriter-cursor::after {
-  content: '|';
-  color: var(--color-primary);
-  animation: blink-caret 1s step-end infinite;
-}
 
 /* ─── Form Elements ────────────────────────────────────────────── */
 input, select, textarea {
