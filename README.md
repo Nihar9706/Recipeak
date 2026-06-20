@@ -7,7 +7,6 @@
 ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-8-47A248?logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 
 > A goal-based food and recipe platform where athletes and fitness enthusiasts discover recipes tailored to their goals and view detailed nutritional breakdowns.
 
@@ -36,11 +35,6 @@
 | Vite 8 | Build tool |
 | Tailwind CSS 4 | Styling |
 | React Router v7 | Client routing |
-| TanStack Query | Data fetching & caching |
-| Axios | HTTP client |
-| Recharts | Nutrition charts |
-| Framer Motion | Animations |
-| Lucide React | Icons |
 
 ### Backend
 | Technology | Purpose |
@@ -49,8 +43,7 @@
 | TypeScript | Type safety |
 | MongoDB + Mongoose | Database |
 | JWT + bcrypt | Authentication |
-| Zod | Input validation |
-| Swagger | API documentation |
+
 
 ---
 
