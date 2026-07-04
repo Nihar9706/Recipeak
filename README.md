@@ -30,7 +30,7 @@
 
 ### Frontend
 | Technology | Purpose |
-
+|---|---|
 | React 19 + TypeScript | UI framework |
 | Vite 8 | Build tool |
 | Tailwind CSS 4 | Styling |
@@ -110,6 +110,7 @@ npm run dev
 cd client
 npm run dev
 ```
+
 
 ## 📡 API Endpoints
 
