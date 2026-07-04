@@ -30,7 +30,7 @@
 
 ### Frontend
 | Technology | Purpose |
-|---|---|
+
 | React 19 + TypeScript | UI framework |
 | Vite 8 | Build tool |
 | Tailwind CSS 4 | Styling |
@@ -50,7 +50,6 @@
 | JWT + bcrypt | Authentication |
 | Zod | Input validation |
 | Swagger | API documentation |
-
 
 ---
 
@@ -111,11 +110,6 @@ npm run dev
 cd client
 npm run dev
 ```
-
-- **Frontend:** http://localhost:5173
-- **Backend:** http://localhost:5000
-- **API Docs:** http://localhost:5000/api-docs
-
 
 ## 📡 API Endpoints
 
