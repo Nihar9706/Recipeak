@@ -21,7 +21,6 @@
 - **📏 Adjustable Servings** — Scale ingredient quantities with a serving multiplier
 - **✅ Interactive Cooking** — Tap-to-cross-off ingredients and steps while cooking
 - **🔐 JWT Authentication** — Secure signup/login with httpOnly cookies
-- **📱 Fully Responsive** — Mobile-first design, 1→2→3→4 column grid
 - **☀️ Warm Pastel Light UI** — Clean, inviting editorial aesthetic with soft pastel tones and Playfair Display typography
 
 ---
