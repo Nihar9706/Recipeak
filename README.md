@@ -35,11 +35,7 @@
 | Vite 8 | Build tool |
 | Tailwind CSS 4 | Styling |
 | React Router v7 | Client routing |
-| TanStack Query | Data fetching & caching |
-| Axios | HTTP client |
-| Recharts | Nutrition charts |
-| Framer Motion | Animations |
-| Lucide React | Icons |
+
 
 ### Backend
 | Technology | Purpose |
