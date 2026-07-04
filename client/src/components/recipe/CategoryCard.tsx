@@ -34,7 +34,7 @@ export default function CategoryCard({ category, index = 0 }: CategoryCardProps)
             <span className="text-4xl">{category.icon}</span>
             <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider
                            bg-accent-blue/15 text-primary">
-              {category.type === 'fitness_goal' ? 'Goal' : 'Sport'}
+              {category.type === 'fitness_goal' ? 'Goal' : 'Cuisine'}
             </span>
           </div>
 

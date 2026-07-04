@@ -24,6 +24,7 @@ export interface IRecipe extends Document {
   description: string;
   imageUrl: string;
   category: mongoose.Types.ObjectId;
+  fitnessCategory: mongoose.Types.ObjectId | null;
   tags: string[];
   difficulty: 'Easy' | 'Medium' | 'Hard';
   prepTime: number;
@@ -32,7 +33,7 @@ export interface IRecipe extends Document {
   ingredients: IIngredient[];
   steps: string[];
   nutritionSummary: INutritionSummary;
-  spoonacularId: number | null;
+  kaggleId: number | null;
   createdAt: Date;
 }
 
@@ -81,6 +82,11 @@ const recipeSchema = new Schema<IRecipe>(
       ref: 'Category',
       required: true,
     },
+    fitnessCategory: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category',
+      default: null,
+    },
     tags: [{ type: String }],
     difficulty: {
       type: String,
@@ -106,10 +112,9 @@ const recipeSchema = new Schema<IRecipe>(
       type: nutritionSummarySchema,
       required: true,
     },
-    spoonacularId: {
+    kaggleId: {
       type: Number,
       default: null,
-      sparse: true,
     },
   },
   {
@@ -119,9 +124,10 @@ const recipeSchema = new Schema<IRecipe>(
 
 // Index for efficient filtering and search
 recipeSchema.index({ category: 1 });
+recipeSchema.index({ fitnessCategory: 1 });
 recipeSchema.index({ 'nutritionSummary.calories': 1 });
 recipeSchema.index({ 'nutritionSummary.protein_g': -1 });
 recipeSchema.index({ title: 'text', description: 'text', tags: 'text' });
-recipeSchema.index({ spoonacularId: 1 }, { unique: true, sparse: true });
+recipeSchema.index({ kaggleId: 1 }, { unique: true, sparse: true });
 
 export const Recipe = mongoose.model<IRecipe>('Recipe', recipeSchema);

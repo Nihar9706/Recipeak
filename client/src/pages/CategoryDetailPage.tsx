@@ -45,7 +45,7 @@ export default function CategoryDetailPage() {
               <span className="text-4xl">{category.icon}</span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider
                              bg-accent-blue/15 text-primary">
-                {category.type === 'fitness_goal' ? 'Fitness Goal' : 'Sport'}
+                {category.type === 'fitness_goal' ? 'Fitness Goal' : 'Cuisine'}
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl font-bold mb-3 text-text">

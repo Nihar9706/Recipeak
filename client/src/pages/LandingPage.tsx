@@ -9,8 +9,8 @@ export default function LandingPage() {
   const { data: categories } = useCategories();
   const { data: featured } = useFeaturedRecipes();
 
+  const cuisines = categories?.filter((c) => c.type === 'cuisine') || [];
   const fitnessGoals = categories?.filter((c) => c.type === 'fitness_goal') || [];
-  const sportCats = categories?.filter((c) => c.type === 'sport') || [];
 
   return (
     <div className="min-h-screen">
@@ -94,7 +94,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: <Target className="text-primary" size={28} />, title: 'Pick Your Goal', desc: 'Choose from fat loss, muscle building, or your specific sport category.', bg: 'bg-accent-blue/15' },
+              { icon: <Target className="text-primary" size={28} />, title: 'Find Your Flavor', desc: 'Choose the cuisine that matches your taste and cooking style.', bg: 'bg-accent-blue/15' },
               { icon: <ChefHat className="text-accent-red" size={28} />, title: 'Discover Recipes', desc: 'Browse curated recipes with full nutrition data tailored to your needs.', bg: 'bg-secondary/30' },
               { icon: <Zap className="text-accent-green" size={28} />, title: 'Cook & Track', desc: 'Follow step-by-step instructions with adjustable servings and macro tracking.', bg: 'bg-accent-green/15' },
             ].map((step, i) => (
@@ -119,21 +119,21 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Fitness Goal Categories ──────────────────────────── */}
-      {fitnessGoals.length > 0 && (
+      {/* ─── Cuisines Categories ──────────────────────────── */}
+      {cuisines.length > 0 && (
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold text-text">Fitness Goals</h2>
-                <p className="text-text-muted mt-2 text-base">Recipes designed for your physique targets</p>
+                <h2 className="font-display text-3xl sm:text-4xl font-bold text-text">Explore Cuisines</h2>
+                <p className="text-text-muted mt-2 text-base">Discover authentic recipes from different cuisines around the world.</p>
               </div>
               <Link to="/categories" className="hidden sm:flex items-center gap-1 text-sm text-primary font-semibold hover:underline">
                 View all <ArrowRight size={14} />
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {fitnessGoals.map((cat, i) => (
+              {cuisines.slice(0, 8).map((cat, i) => (
                 <CategoryCard key={cat._id} category={cat} index={i} />
               ))}
             </div>
@@ -141,18 +141,18 @@ export default function LandingPage() {
         </section>
       )}
 
-      {/* ─── Sport Categories ─────────────────────────────────── */}
-      {sportCats.length > 0 && (
+      {/* ─── Fitness Goal Categories ─────────────────────────────────── */}
+      {fitnessGoals.length > 0 && (
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold text-text">Athlete Fuel</h2>
-                <p className="text-text-muted mt-2 text-base">Sport-specific nutrition for peak performance</p>
+                <h2 className="font-display text-3xl sm:text-4xl font-bold text-text">Fitness Goals</h2>
+                <p className="text-text-muted mt-2 text-base">Find recipes tailored for your specific fitness and health objectives.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {sportCats.slice(0, 8).map((cat, i) => (
+              {fitnessGoals.slice(0, 8).map((cat, i) => (
                 <CategoryCard key={cat._id} category={cat} index={i} />
               ))}
             </div>

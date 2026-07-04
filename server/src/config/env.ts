@@ -8,6 +8,5 @@ export const env = {
   JWT_SECRET: process.env.JWT_SECRET || 'default-secret-change-me',
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
 
-  SPOONACULAR_API_KEY: process.env.SPOONACULAR_API_KEY || '',
   CLIENT_URL: process.env.CLIENT_URL || 'http://localhost:5173',
 };

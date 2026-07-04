@@ -36,6 +36,7 @@ export default function RecipeDetailPage() {
 
   const { recipe, related } = data;
   const category = recipe.category as Category;
+  const fitnessCategory = recipe.fitnessCategory as Category;
   const isSaved = user?.savedRecipes?.some(
     (r) => (typeof r === 'string' ? r : (r as Recipe)._id) === recipe._id
   );
@@ -92,6 +93,11 @@ export default function RecipeDetailPage() {
               {category?.name && (
                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm text-text">
                   {category.icon} {category.name}
+                </span>
+              )}
+              {fitnessCategory?.name && (
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm text-text">
+                  {fitnessCategory.icon} {fitnessCategory.name}
                 </span>
               )}
               <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm bg-white/90 ${difficultyStyle}`}>
@@ -187,7 +193,10 @@ export default function RecipeDetailPage() {
                       {isChecked && <Check size={12} className="text-white" />}
                     </div>
                     <span className={`text-base ${isChecked ? 'line-through text-text-dim' : 'text-text-muted'}`}>
-                      <span className="font-mono font-medium text-text">{qty} {ing.unit}</span> {ing.name}
+                      {ing.unit !== 'portion' && (
+                        <span className="font-mono font-medium text-text">{qty} {ing.unit} </span>
+                      )}
+                      {ing.name}
                     </span>
                   </motion.li>
                 );

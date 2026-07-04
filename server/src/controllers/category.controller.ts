@@ -14,7 +14,9 @@ export const getAllCategories = async (
     // Attach recipe count to each category
     const categoriesWithCount = await Promise.all(
       categories.map(async (cat) => {
-        const recipeCount = await Recipe.countDocuments({ category: cat._id });
+        const recipeCount = await Recipe.countDocuments({
+          $or: [{ category: cat._id }, { fitnessCategory: cat._id }],
+        });
         return { ...cat.toObject(), recipeCount };
       })
     );
@@ -63,7 +65,9 @@ export const getRecipesByCategory = async (
       limit = '12',
     } = req.query;
 
-    const filter: any = { category: category._id };
+    const filter: any = {
+      $or: [{ category: category._id }, { fitnessCategory: category._id }],
+    };
 
     if (difficulty) filter.difficulty = difficulty;
     if (minCalories || maxCalories) {
@@ -94,7 +98,8 @@ export const getRecipesByCategory = async (
       .sort(sortOption)
       .skip((pageNum - 1) * limitNum)
       .limit(limitNum)
-      .populate('category', 'name type icon colorTag slug');
+      .populate('category', 'name type icon colorTag slug')
+      .populate('fitnessCategory', 'name type icon colorTag slug');
 
     res.json({
       success: true,

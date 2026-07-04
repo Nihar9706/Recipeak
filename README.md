@@ -7,7 +7,6 @@
 ![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-8-47A248?logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 
 > A goal-based food and recipe platform where athletes and fitness enthusiasts discover recipes tailored to their goals and view detailed nutritional breakdowns.
 
@@ -59,7 +58,6 @@
 ### Prerequisites
 - Node.js 20+
 - MongoDB (local or Atlas)
-- Spoonacular API key (free tier: [spoonacular.com](https://spoonacular.com/food-api))
 
 
 ### 1. Clone & Install
@@ -88,7 +86,6 @@ Required environment variables:
 ```
 MONGODB_URI=mongodb://localhost:27017/recipeak
 JWT_SECRET=your-secret-key
-SPOONACULAR_API_KEY=your-spoonacular-key
 
 CLIENT_URL=http://localhost:5173
 ```
@@ -97,10 +94,10 @@ CLIENT_URL=http://localhost:5173
 
 ```bash
 cd server
-npm run seed
+npm run seed:kaggle
 ```
 
-This fetches ~50 recipes from Spoonacular with real nutrition data across all 11 categories. The script is re-runnable and skips duplicates.
+This imports recipes from the `dataset/Indian_Food_Ingredients_Nutrition_CookingMethods.csv` Kaggle dataset. It parses ingredients, cooking instructions, and calculates fitness goals (Fat Loss, Muscle Gain, Maintenance) automatically based on calories. You can also run `npm run seed:kaggle:test` to import a smaller subset for quick testing.
 
 ### 4. Start Development
 
@@ -118,13 +115,6 @@ npm run dev
 - **Backend:** http://localhost:5000
 - **API Docs:** http://localhost:5000/api-docs
 
-### Docker (Optional)
-
-```bash
-docker-compose up --build
-```
-
----
 
 ## 📡 API Endpoints
 
@@ -165,7 +155,6 @@ recipeak/
 │   │   ├── store/           # Auth context
 │   │   ├── services/        # Axios API calls
 │   │   └── types/           # TypeScript interfaces
-│   └── Dockerfile
 ├── server/                  # Express backend
 │   ├── src/
 │   │   ├── config/          # DB & env config
@@ -174,11 +163,8 @@ recipeak/
 │   │   ├── models/          # Mongoose schemas
 │   │   ├── routes/          # Express routers
 
-│   │   ├── scripts/         # Seed script
+│   │   ├── scripts/         # Kaggle seed script (seed_kaggle.ts)
 │   │   └── utils/           # ApiError class
-│   └── Dockerfile
-├── docker-compose.yml
-├── .github/workflows/ci.yml
 └── README.md
 ```
 

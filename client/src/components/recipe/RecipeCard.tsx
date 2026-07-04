@@ -10,6 +10,7 @@ interface RecipeCardProps {
 
 export default function RecipeCard({ recipe, index = 0 }: RecipeCardProps) {
   const category = recipe.category as Category;
+  const fitnessCategory = recipe.fitnessCategory as Category;
 
   const difficultyStyle = {
     Easy: 'text-accent-green bg-accent-green/10',
@@ -45,15 +46,25 @@ export default function RecipeCard({ recipe, index = 0 }: RecipeCardProps) {
             {recipe.difficulty}
           </span>
 
-          {/* Category tag */}
-          {category?.name && (
-            <span
-              className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold
-                       backdrop-blur-sm bg-white/90 text-text"
-            >
-              {category.icon} {category.name}
-            </span>
-          )}
+          {/* Category tags */}
+          <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+            {category?.name && (
+              <span
+                className="px-2.5 py-1 rounded-full text-xs font-semibold
+                         backdrop-blur-sm bg-white/90 text-text shadow-sm"
+              >
+                {category.icon} {category.name}
+              </span>
+            )}
+            {fitnessCategory?.name && (
+              <span
+                className="px-2.5 py-1 rounded-full text-xs font-semibold
+                         backdrop-blur-sm bg-white/90 text-text shadow-sm"
+              >
+                {fitnessCategory.icon} {fitnessCategory.name}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Content */}

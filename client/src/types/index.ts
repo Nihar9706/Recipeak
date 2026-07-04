@@ -14,7 +14,7 @@ export interface User {
 export interface Category {
   _id: string;
   name: string;
-  type: 'fitness_goal' | 'sport';
+  type: 'cuisine' | 'fitness_goal' | 'sport';
   description: string;
   icon: string;
   colorTag: string;
@@ -50,6 +50,7 @@ export interface Recipe {
   description: string;
   imageUrl: string;
   category: Category | string;
+  fitnessCategory: Category | string | null;
   tags: string[];
   difficulty: 'Easy' | 'Medium' | 'Hard';
   prepTime: number;
@@ -58,7 +59,7 @@ export interface Recipe {
   ingredients: Ingredient[];
   steps: string[];
   nutritionSummary: NutritionSummary;
-  spoonacularId: number | null;
+  kaggleId: number | null;
   createdAt: string;
 }
 

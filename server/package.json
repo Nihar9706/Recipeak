@@ -7,13 +7,14 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "seed": "tsx src/scripts/seed.ts"
+    "seed:kaggle": "tsx src/scripts/seed_kaggle.ts",
+    "seed:kaggle:test": "tsx src/scripts/seed_kaggle.ts --limit 50"
   },
   "dependencies": {
-    "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",

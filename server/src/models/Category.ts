@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ICategory extends Document {
   name: string;
-  type: 'fitness_goal' | 'sport';
+  type: 'cuisine' | 'fitness_goal' | 'sport';
   description: string;
   icon: string;
   colorTag: string;
@@ -20,7 +20,7 @@ const categorySchema = new Schema<ICategory>(
     type: {
       type: String,
       required: true,
-      enum: ['fitness_goal', 'sport'],
+      enum: ['cuisine', 'fitness_goal', 'sport'],
     },
     description: {
       type: String,

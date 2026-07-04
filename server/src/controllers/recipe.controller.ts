@@ -24,7 +24,9 @@ export const getAllRecipes = async (
 
     const filter: any = {};
 
-    if (category) filter.category = category;
+    if (category) {
+      filter.$or = [{ category }, { fitnessCategory: category }];
+    }
     if (difficulty) filter.difficulty = difficulty;
 
     if (minCalories || maxCalories) {
@@ -63,7 +65,8 @@ export const getAllRecipes = async (
       .sort(sortOption)
       .skip((pageNum - 1) * limitNum)
       .limit(limitNum)
-      .populate('category', 'name type icon colorTag slug');
+      .populate('category', 'name type icon colorTag slug')
+      .populate('fitnessCategory', 'name type icon colorTag slug');
 
     res.json({
       success: true,
@@ -87,7 +90,8 @@ export const getRecipeById = async (
 ): Promise<void> => {
   try {
     const recipe = await Recipe.findById(req.params.id)
-      .populate('category', 'name type icon colorTag slug');
+      .populate('category', 'name type icon colorTag slug')
+      .populate('fitnessCategory', 'name type icon colorTag slug');
 
     if (!recipe) {
       throw ApiError.notFound('Recipe not found.');
@@ -95,12 +99,13 @@ export const getRecipeById = async (
 
     // Get related recipes from same category
     const related = await Recipe.find({
-      category: recipe.category,
+      $or: [{ category: recipe.category }, { fitnessCategory: recipe.fitnessCategory }],
       _id: { $ne: recipe._id },
     })
       .limit(4)
       .select('title imageUrl nutritionSummary prepTime cookTime difficulty category')
-      .populate('category', 'name colorTag slug');
+      .populate('category', 'name colorTag slug')
+      .populate('fitnessCategory', 'name colorTag slug');
 
     res.json({
       success: true,
@@ -176,7 +181,16 @@ export const getFeaturedRecipes = async (
           as: 'category',
         },
       },
-      { $unwind: '$category' },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'fitnessCategory',
+          foreignField: '_id',
+          as: 'fitnessCategory',
+        },
+      },
+      { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$fitnessCategory', preserveNullAndEmptyArrays: true } },
     ]);
 
     res.json({ success: true, data: recipes });
