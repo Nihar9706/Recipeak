@@ -21,7 +21,7 @@
 - **📏 Adjustable Servings** — Scale ingredient quantities with a serving multiplier
 - **✅ Interactive Cooking** — Tap-to-cross-off ingredients and steps while cooking
 - **🔐 JWT Authentication** — Secure signup/login with httpOnly cookies
-- **📱 Fully Responsive** — Mobile-first design, 1→2→3→4 column grid
+
 - **☀️ Warm Pastel Light UI** — Clean, inviting editorial aesthetic with soft pastel tones and Playfair Display typography
 
 ---
@@ -93,7 +93,7 @@ cd server
 npm run seed:kaggle
 ```
 
-This imports recipes from the `dataset/Indian_Food_Ingredients_Nutrition_CookingMethods.csv` Kaggle dataset. It parses ingredients, cooking instructions, and calculates fitness goals (Fat Loss, Muscle Gain, Maintenance) automatically based on calories. You can also run `npm run seed:kaggle:test` to import a smaller subset for quick testing.
+This imports recipes from the `dataset/Indian_Food_Ingredients_Nutrition_CookingMethods.csv` Kaggle dataset. It parses ingredients, cooking instructions, and calculates fitness goals (Fat Loss, Muscle Gain, Maintenance) automatically based on calories. You can also run `npm run seed:kaggle:test` to import a smaller subset for quick testing
 
 ### 4. Start Development
 
@@ -112,20 +112,25 @@ npm run dev
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
+| GET | `/health` | System health check | No |
 | POST | `/api/auth/register` | Register user | No |
 | POST | `/api/auth/login` | Login | No |
 | POST | `/api/auth/logout` | Logout | No |
 | GET | `/api/auth/me` | Get current user | Yes |
 | GET | `/api/categories` | List all categories | No |
+| GET | `/api/categories/:id` | Category details | No |
 | GET | `/api/categories/:id/recipes` | Recipes by category | No |
 | GET | `/api/recipes` | List recipes (filtered) | No |
 | GET | `/api/recipes/featured` | Featured recipes | No |
 | GET | `/api/recipes/:id` | Recipe detail + related | No |
+| POST | `/api/recipes` | Create a recipe | Admin |
+| PUT | `/api/recipes/:id` | Update a recipe | Admin |
+| DELETE | `/api/recipes/:id` | Delete a recipe | Admin |
 | GET | `/api/users/profile` | User profile | Yes |
 | PUT | `/api/users/profile` | Update profile | Yes |
 | GET | `/api/users/saved` | Saved recipes | Yes |
-| POST | `/api/users/saved/:id` | Save recipe | Yes |
-| DELETE | `/api/users/saved/:id` | Unsave recipe | Yes |
+| POST | `/api/users/saved/:recipeId` | Save recipe | Yes |
+| DELETE | `/api/users/saved/:recipeId` | Unsave recipe | Yes |
 
 
 Full Swagger docs at `/api-docs` when the server is running.
