@@ -68,6 +68,16 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
 }));
 
 // --------------- Routes ---------------
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'Recipeak API',
+    version: '1.0.0',
+    status: 'running',
+    docs: '/api-docs',
+    health: '/health',
+  });
+});
+
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
