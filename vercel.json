@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "installCommand": "npm install --prefix client && npm install --prefix server",
+  "buildCommand": "npm run build --prefix client",
+  "outputDirectory": "client/dist",
+  "functions": {
+    "server/api/index.ts": {
+      "includeFiles": "server/src/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/server/api/index.ts" },
+    { "source": "/health", "destination": "/server/api/index.ts" },
+    { "source": "/api-docs/(.*)", "destination": "/server/api/index.ts" },
+    { "source": "/(.*)", "destination": "/client/dist/$1" }
+  ]
+}
