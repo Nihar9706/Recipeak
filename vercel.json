@@ -8,11 +8,11 @@
       "includeFiles": "server/**"
     }
   },
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.ts" },
-    { "src": "/health", "dest": "/api/index.ts" },
-    { "src": "/api-docs(.*)", "dest": "/api/index.ts" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/health", "destination": "/api/index.ts" },
+    { "source": "/api-docs", "destination": "/api/index.ts" },
+    { "source": "/api-docs/(.*)", "destination": "/api/index.ts" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ]
 }
