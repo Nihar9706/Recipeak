@@ -72,6 +72,16 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Ensure DB is connected for API routes (critical for Vercel serverless)
+app.use('/api', async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.use('/api', apiRouter);
 
 // --------------- Error Handling ---------------
@@ -80,10 +90,14 @@ app.use(errorHandler);
 // --------------- Start ---------------
 const start = async () => {
   await connectDB();
-  app.listen(env.PORT, () => {
-    console.log(`🚀 Recipeak API running on http://localhost:${env.PORT}`);
-    console.log(`📄 Swagger docs at http://localhost:${env.PORT}/api-docs`);
-  });
+  // Only start listener in non-production or if explicitly running locally
+  // Vercel serverless functions will just import the app
+  if (env.NODE_ENV !== 'production') {
+    app.listen(env.PORT, () => {
+      console.log(`🚀 Recipeak API running on http://localhost:${env.PORT}`);
+      console.log(`📄 Swagger docs at http://localhost:${env.PORT}/api-docs`);
+    });
+  }
 };
 
 start();
